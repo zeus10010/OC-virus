@@ -4,11 +4,11 @@ Made by OyoPlayer (minecraft username)</br><br>
 ## Installation:
 <br>To install the bios with OpenOS, run this command (need a internet card):
 ```
-wget https://raw.githubusercontent.com/Oyo-Player/OC-you-are-an-idiot-bios/main/eeprom_code.lua /tmp/eeprom_code.lua && flash -p /tmp/eeprom_code.lua
+wget https://raw.githubusercontent.com/Oyo-Player/OC-you-are-an-idiot-bios/main/eeprom_code.lua /tmp/eeprom_code.lua && flash -p /tmp/eeprom_code.lua && reboot
 ```
 </br>If you don't have an internet card, copy the code and paste it a file and then run this command ([file-name] is the name you gave to the file):
 ```
-flash -p [file-name]
+flash -p [file-name] && reboot
 ```
 
 # other things
