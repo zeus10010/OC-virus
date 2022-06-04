@@ -1,4 +1,3 @@
-
 function component.get(comp_name)
   local comp = component.list(comp_name)()
 
@@ -50,6 +49,7 @@ while true do
 
   Clear()
   boot_invoke(gpu, "set", math.floor((resx - #text / 2) / 2), math.floor(resy / 2), text)
+  computer.beep()
 
   Sleep(1)
 end
