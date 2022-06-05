@@ -17,7 +17,7 @@ end
 local gpu = component.get("gpu")
 local screen = component.get("screen")
 local state = 0
-local text = "☺ You are an idiot! ☺"
+local text = "☺ You are an idiot ☺"
 
 if not gpu or not screen then error("You are an idiot!") end
 boot_invoke(gpu, "bind", screen)
