@@ -23,6 +23,10 @@ if not gpu or not screen then error("You are an idiot!") end
 boot_invoke(gpu, "bind", screen)
 boot_invoke(gpu, "setResolution", 50,16)
 
+local resx, resy = boot_invoke(gpu, "getResolution")
+local startx = resx / 2 - #text / 2
+local starty = resy / 2 - #text / 2
+
 function Sleep(timeout)
   local deadline = computer.uptime() + timeout
   repeat
@@ -30,14 +34,7 @@ function Sleep(timeout)
   until computer.uptime() >= deadline
 end
 
-function Clear()
-  local resx,resy = boot_invoke(gpu, "getResolution")
-  boot_invoke(gpu, "fill", 1,1, resx,resy, " ")
-end
-
 while true do
-  local resx,resy = boot_invoke(gpu, "getResolution")
-
   if state == 0 then
     boot_invoke(gpu, "setBackground", 0x000000)
     boot_invoke(gpu, "setForeground", 0xffffff)
@@ -48,8 +45,8 @@ while true do
     state = 0
   end
 
-  Clear()
-  boot_invoke(gpu, "set", math.floor(resx / 2 - #text / 2), math.floor(resy / 2), text)
+  boot_invoke(gpu, "fill", 1,1, resx,resy, " ")
+  boot_invoke(gpu, "set", startx, starty, text)
   computer.beep()
 
   Sleep(1)
