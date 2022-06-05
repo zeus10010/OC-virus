@@ -19,12 +19,12 @@ local screen = component.get("screen")
 local state = 0
 local text = "☺ You are an idiot ☺"
 
-if not gpu or not screen then error("You are an idiot!") end
+if not gpu or not screen then error("☺ You are an idiot ☺") end
 boot_invoke(gpu, "bind", screen)
 boot_invoke(gpu, "setResolution", 50,16)
 
 local resx, resy = boot_invoke(gpu, "getResolution")
-local startx = resx / 2 - #text / 2
+local startx = (resx / 2 - #text / 2) + 1
 local starty = resy / 2
 
 function Sleep(timeout)
