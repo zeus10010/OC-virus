@@ -25,7 +25,7 @@ boot_invoke(gpu, "setResolution", 50,16)
 
 local resx, resy = boot_invoke(gpu, "getResolution")
 local startx = resx / 2 - #text / 2
-local starty = resy / 2 - #text / 2
+local starty = resy / 2
 
 function Sleep(timeout)
   local deadline = computer.uptime() + timeout
