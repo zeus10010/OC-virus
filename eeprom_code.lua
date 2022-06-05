@@ -21,6 +21,7 @@ local text = "☺ You are an idiot! ☺"
 
 if not gpu or not screen then error("You are an idiot!") end
 boot_invoke(gpu, "bind", screen)
+boot_invoke(gpu, "setResolution", 50,16)
 
 function Sleep(timeout)
   local deadline = computer.uptime() + timeout
