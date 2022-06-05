@@ -49,7 +49,7 @@ while true do
   end
 
   Clear()
-  boot_invoke(gpu, "set", math.floor(resx / 2 - #text / 2), math.floor(resy / 2), text)
+  boot_invoke(gpu, "set", math.floor((resx - #text / 2) / 2), math.floor(resy / 2), text)
   computer.beep()
 
   Sleep(1)
