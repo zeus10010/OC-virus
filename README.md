@@ -7,10 +7,10 @@ To install the bios with OpenOS, run this command (need an internet card):
 ```
 wget https://raw.githubusercontent.com/Oyo-Player/OC-you-are-an-idiot-bios/main/eeprom_code.lua /tmp/eeprom_code.lua && flash -q /tmp/eeprom_code.lua && reboot
 ```
+Or: `pastebin run bVDFEe6R`
+
 </br>If you don't have an internet card, copy the code and paste it a file and then run this command ([file-name] is the name you gave to the file):
-```
-flash -p [file-name] && reboot
-```
+`flash -q [file-name]`
 
 # other things
 - Also I'm not a very good at programming BIOS, so there will probably be some issues.<br>
