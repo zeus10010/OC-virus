@@ -9,7 +9,7 @@ if not gpu or not screen then error("You are an idiot") end
 invoke(gpu, "bind", screen)
 invoke(gpu, "setResolution", 50,16)
 
-local resx, resy = boot_invoke(gpu, "getResolution")
+local resx, resy = invoke(gpu, "getResolution")
 local startx = (resx / 2 - #text / 2) + 1
 local starty = resy / 2
 
