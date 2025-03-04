@@ -3,9 +3,9 @@ local invoke = component.invoke
 local gpu = component.list("gpu")()
 local screen = component.list("screen")()
 local state = 0
-local text = "You are an idiot"
+local text = "Votre système informatique a été infecté par le virus Z. Tous vos fichiers ont été supprimés et sauvegardés sur une machine à distance. Négociations disponibles"
 
-if not gpu or not screen then error("You are an idiot") end
+if not gpu or not screen then error("Votre système informatique a été infecté par le virus Z. Tous vos fichiers ont été supprimés et sauvegardés sur une machine à distance. Négociations disponibles") end
 invoke(gpu, "bind", screen)
 invoke(gpu, "setResolution", 50,16)
 
