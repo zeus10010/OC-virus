@@ -10,8 +10,6 @@ local ATTEMPT_DELAY = 5
 local MAX_ATTEMPTS = 3
 local attempts = 0
 
-local autorunActive = false
-
 function Sleep(timeout)
   local deadline = computer.uptime() + timeout
   repeat
@@ -20,17 +18,12 @@ function Sleep(timeout)
 end
 
 function EnableAutorun()
-  try {
       fs.setAutorunEnabled(true)
-      autorunActive = true
-      computer.stop()
-      Sleep(0.1)
-      computer.start()
-  }
+      computer.shutdown(true)
 end
 
 function lockScreen()
-  if(autorunActive = false) {
+  if(fs.isAutorunEnabled()) {
     term.clear()
     term.write("=== Système verrouillé par Z Industries ===\n")
     term.write("Entrez le mot de passe pour déverrouiller :\n")
