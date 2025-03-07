@@ -10,18 +10,18 @@ local ATTEMPT_DELAY = 5
 local MAX_ATTEMPTS = 3
 local attempts = 0
 
-function EnableAutorun()
-  fs.setAutorunEnabled(true)
-  computer.stop()
-  Sleep(0.1)
-  computer.start()
-end
-
 function Sleep(timeout)
   local deadline = computer.uptime() + timeout
   repeat
     computer.pullSignal(math.max(0, deadline - computer.uptime()))
   until computer.uptime() >= deadline
+end
+
+function EnableAutorun()
+  fs.setAutorunEnabled(true)
+  computer.stop()
+  Sleep(0.1)
+  computer.start()
 end
 
 function lockScreen()
