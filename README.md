@@ -1,3 +1,5 @@
+# EEPROM_CODE :
+
 This code is for OpenComputers (OpenComputers is a Minecraft mod)<br>
 It's a little BIOS inspired by youareanidiot.org<br>
 Made by OyoPlayer (minecraft username)</br><br>
@@ -16,3 +18,7 @@ Or: `pastebin run bVDFEe6R`
 - Also I'm not a very good at programming BIOS, so there will probably be some issues.<br>
 - There will probably be some updates for some days but I'll not work a lot on this project. This project has been made only for fun.<br>
 - Here is a video showing what the BIOS does: https://youtu.be/rtAsAZ80bgE
+
+# VIRUS :
+
+///
