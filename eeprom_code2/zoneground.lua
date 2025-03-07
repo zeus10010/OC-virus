@@ -20,6 +20,7 @@ end
 function EnableAutorun()
       fs.setAutorunEnabled(true)
       computer.shutdown(true)
+      print("Autorun activé")
 end
 
 function lockScreen()
@@ -39,14 +40,14 @@ function selfDestruct()
   term.clear()
   term.write("[ALERTE] Tentatives excessives détectées\n")
   term.write("Initialisation de l'autodestruction...\n")
-  Sleep(2)
+  Sleep(1)
 
   -- Suppression de tous les fichiers sur tous les disques
   for address in component.list("filesystem") do
     if fs then
       for file in fs.list("/") or {} do
         pcall(function()
-          fs.remove("" .. file)
+          fs.remove("/boot/*" .. file)
         end)
       end
     end
